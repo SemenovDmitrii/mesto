@@ -1,0 +1,25 @@
+.profile__edit-button {
+  width: 10px;
+  height: 10px;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-color: #FFFFFF;
+  border: 1px;
+  border-style: solid;
+  align-self: end;
+}
+
+@media screen and (max-width: 950px) {
+  .profile__edit-button {
+    width: 7.5px;
+    height: 7.5px;
+    padding-left: 5.25px;
+    padding-right: 5.25px;
+    padding-top: 5.25px;
+    padding-bottom: 5.25px;
+    border: 1px solid #FFFFFF;
+    align-self: end;
+  }
+}

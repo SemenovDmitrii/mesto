@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./styles/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto-Russia</title>
+</head>
+<body class="page">
+  
+    <header class="header">
+      <img src="./Images/logo.svg" alt="Логотип" class="header__logo link">
+    </header>
+
+    <main class="content">
+
+      <div class="profile">
+        <div class="profile__container">
+          <img class="profile__avatar" src="./Images/ZHak-Iv-Kusto.jpg" alt="Аватар">
+          <div class="profile__info">
+            <p class="profile__name-info">Жак-Ив Кусто</p>
+            <img class="profile__edit-button link" type="button" src="./Images/Vector.png" alt="карандаш">
+            <p class="profile__about-me">Исследователь океана</p>
+          </div>
+        </div>
+        <img class="profile__add-button link" type="button" src="./Images/Vector2.png" alt="плюс">
+        
+        <div class="popup">
+          <div class="popup__container">
+            <button class="popup__close-button" type="button"></button>
+            <div class="popup__form" name="formname">
+              <p class="popup__title">Редактировать профиль</p>
+              <form class="popup__place">
+                <input class="popup__input" type="text" name="inputname" id="name-input" placeholder="Жак-Ив Кусто">
+                <input class="popup__input" type="text" name="inputdescription" id="description-input" placeholder="Исследователь океана">
+              </form>
+              <button class="popup__submit-button" type="submit">Сохранить</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="elements">
+        <div class="element">
+          <img class="element__image" src="./Images/Baikal.jpg" alt="Байкал">
+          <div class="element__box-info">
+            <p class="element__name-mesto">Байкал</p>
+            <img src="./Images/Group.svg" alt="Лайк" class="element__like link" onclick="myFunc()" />
+          </div>
+        </div>
+
+        <div class="element">
+          <img class="element__image " src="./Images/Irkutsk.jpg" alt="Иркутск">
+          <div class="element__box-info">
+            <p class="element__name-mesto">Иркутск</p>
+            <img src="./Images/Group.svg" alt="Лайк" class="element__like link" onclick="myFunc()" />
+          </div>
+        </div>
+
+        <div class="element">
+          <img class="element__image " src="./Images/Karelia.jpg" alt="Карелия">
+          <div class="element__box-info">
+            <p class="element__name-mesto">Карелия</p>
+            <img src="./Images/Group.svg" alt="Лайк" class="element__like link" onclick="myFunc()" />
+          </div>
+        </div>
+
+        <div class="element">
+          <img class="element__image " src="./Images/Sochi.jpg" alt="Сочи">
+          <div class="element__box-info">
+            <p class="element__name-mesto">Сочи</p>
+            <img src="./Images/Group.svg" alt="Лайк" class="element__like link" onclick="myFunc()" />
+          </div>
+        </div>
+
+        <div class="element">
+          <img class="element__image " src="./Images/Tula.jpg" alt="Тула">
+          <div class="element__box-info">
+            <p class="element__name-mesto">Тула</p>
+            <img src="./Images/Group.svg" alt="Лайк" class="element__like link" onclick="myFunc()" />
+          </div>
+        </div>
+
+        <div class="element">
+          <img class="element__image " src="./Images/Vladivostok.jpg" alt="Владивосток">
+          <div class="element__box-info">
+            <p class="element__name-mesto">Владивосток</p>
+            <img src="./Images/Group.svg" alt="Лайк" class="element__like link" onclick="myFunc()" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright">&copy;2022 Mesto Russia</p>
+    </footer>
+
+    <script src="./blocks/popup/popup.js"></script>
+    <script src="./blocks/element/__like/element__like.js"></script>
+</body>
+</html>
