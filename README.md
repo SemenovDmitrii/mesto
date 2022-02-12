@@ -9,4 +9,4 @@
 - Устранение ошибок;
 
 GiTHub Pages
-<>
+<https://semenovdmitrii.github.io/mesto/>
