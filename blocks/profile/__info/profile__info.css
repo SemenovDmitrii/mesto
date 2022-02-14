@@ -5,13 +5,14 @@
   column-gap: 18px;
   row-gap: 16px;
   width: auto;
+  max-width: 560px;
 }
 
 @media screen and (max-width: 950px) {
   .profile__info {
     grid-template-columns: 1fr 18px;
     column-gap: 10px;
-    row-gap: 14px;
+    row-gap: 5px;
     justify-items: center;
     margin: 0 auto;
   }

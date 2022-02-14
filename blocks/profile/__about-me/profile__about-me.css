@@ -7,8 +7,12 @@
   letter-spacing: 0em;
   text-align: left;
   margin: 0;
+  padding: 0;
   grid-column: 1 / span 2;
   grid-row: 2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 950px) {
@@ -17,6 +21,6 @@
     line-height: 17px;
     text-align: center;
     grid-column: 1 / span 1;
-    grid-row: 2;
+    grid-row: 2;/* не могу убрать, если убираю то строка станровится короткой*/
   }
 }
