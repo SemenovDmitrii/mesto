@@ -80,17 +80,15 @@
   </footer>
   
   <div class="popup">
-    <div class="popup__container">
+    <form class="popup__container" name="formname">
       <button class="popup__close-button" type="button"></button>
-      <form class="popup__form" name="formname">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <fieldset class="popup__field">
-          <input class="popup__input" type="text" name="inputname" id="name-input" placeholder="Жак-Ив Кусто">
-          <input class="popup__input" type="text" name="inputdescription" id="description-input" placeholder="Исследователь океана">
-        </fieldset>
-        <button class="popup__submit-button" type="submit">Сохранить</button>
-      </form>
-    </div>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <fieldset class="popup__field">
+        <input class="popup__input" type="text" name="inputname" id="name-input" placeholder="Жак-Ив Кусто">
+        <input class="popup__input" type="text" name="inputdescription" id="description-input" placeholder="Исследователь океана">
+      </fieldset>
+      <button class="popup__submit-button" type="submit">Сохранить</button>
+    </form>
   </div>
 
   <script src="./script/script.js"></script>
