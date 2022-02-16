@@ -21,7 +21,6 @@
     line-height: 17px;
     text-align: center;
     grid-column: 1 / span 1;
-    grid-row: 2;/* не могу убрать, если убираю то строка станровится короткой*/
     max-width: 189px;
   }
 }

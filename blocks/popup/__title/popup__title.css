@@ -8,13 +8,13 @@
   text-align: left;
   color: #000000;
   padding: 0;
-  margin: 34px 0 54px 36px;
+  margin: 34px 0 30px 36px;
 }
 
 @media screen and (max-width: 950px) {
   .popup__title {
     font-size: 18px;
     line-height: 22px;
-    margin: 25px 22px 62px;
+    margin: 24px 22px 63px;
   }
 }

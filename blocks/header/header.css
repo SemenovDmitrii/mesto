@@ -3,7 +3,7 @@
   min-height: 74px;
   padding: 0;
   margin: 45px auto 40px;
-  border-bottom: 1px solid #545454;
+  border-bottom: rgba(84, 84, 84, 0.7) solid 1px;
 }
 @media screen and (max-width: 950px) {
   .header {

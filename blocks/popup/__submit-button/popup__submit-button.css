@@ -10,7 +10,7 @@
   width: 358px;
   min-height: 50px;
   padding: 0;
-  margin: 48px 36px 37px;
+  margin: 46px 36px 37px;
   cursor: pointer;
   transition: opacity .5s ease;
 }
@@ -23,7 +23,7 @@
   .popup__submit-button {
     width: 238px;
     min-height: 46px;
-    margin: 45px 22px 25px;
+    margin: 43px 22px 26px;
     font-size: 14px;
     line-height: 17px;
   }
