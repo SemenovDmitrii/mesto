@@ -13,7 +13,9 @@
   border: none;
   background-color: #fff;
 }
-
-.element__like:active {
-  background-image: url(../../../images/image-like-black.svg);
+.element__like:hover {
+  opacity: .6;
+  transition: 0.5s;
 }
+
+
