@@ -25,53 +25,8 @@
     </section>
 
     <section class="elements">
-      <div class="element">
-        <img class="element__image" src="./Images/Baikal.jpg" alt="Байкал">
-        <div class="element__box-info">
-          <p class="element__name-mesto">Байкал</p>
-          <button class="element__like link" type="button"></button>
-        </div>
-      </div>
-
-      <div class="element">
-        <img class="element__image" src="./Images/Irkutsk.jpg" alt="Иркутск">
-        <div class="element__box-info">
-          <p class="element__name-mesto">Иркутск</p>
-          <button class="element__like link" type="button"></button>
-        </div>
-      </div>
-
-      <div class="element">
-        <img class="element__image" src="./Images/Karelia.jpg" alt="Карелия">
-        <div class="element__box-info">
-          <p class="element__name-mesto">Карелия</p>
-          <button class="element__like link" type="button"></button>
-        </div>
-      </div>
-
-      <div class="element">
-        <img class="element__image" src="./Images/Sochi.jpg" alt="Сочи">
-        <div class="element__box-info">
-          <p class="element__name-mesto">Сочи</p>
-          <button class="element__like link" type="button"></button>
-        </div>
-      </div>
-
-      <div class="element">
-        <img class="element__image" src="./Images/Tula.jpg" alt="Тула">
-        <div class="element__box-info">
-          <p class="element__name-mesto">Тула</p>
-          <button class="element__like link" type="button"></button>
-        </div>
-      </div>
-
-      <div class="element">
-        <img class="element__image" src="./Images/Vladivostok.jpg" alt="Владивосток">
-        <div class="element__box-info">
-          <p class="element__name-mesto">Владивосток</p>
-          <button class="element__like link" type="button"></button>
-        </div>
-      </div>
+      <ul class="element-list">
+      </ul>
     </section>
   </main>
 
@@ -79,17 +34,54 @@
     <p class="footer__copyright">&copy;2022 Mesto Russia</p>
   </footer>
   
-  <div class="popup">
-    <form class="popup__container" name="formname">
+  <div class="popup popup_edit-profile">
+    <div class="popup__container">
       <button class="popup__close-button" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <fieldset class="popup__field">
-        <input class="popup__input" type="text" name="inputname" id="name-input" placeholder="Жак-Ив Кусто">
-        <input class="popup__input" type="text" name="inputdescription" id="description-input" placeholder="Исследователь океана">
-      </fieldset>
+      <form class="popup__form" name="formprofile">
+        <fieldset class="popup__field">
+          <input class="popup__input" type="text" name="inputname" id="name-input" placeholder="Жак-Ив Кусто">
+          <input class="popup__input" type="text" name="inputdescription" id="description-input" placeholder="Исследователь океана">
+        </fieldset>
+      </form>
       <button class="popup__submit-button" type="submit">Сохранить</button>
-    </form>
+    </div>
   </div>
+
+  <div class="popup popup_add-mesto">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form" name="formaddmesto">
+        <fieldset class="popup__field">
+          <input class="popup__input" type="text" name="inputnameelement" id="input-element" placeholder="Название">
+          <input class="popup__input" type="url" name="inputurl" id="input-url" placeholder="Ссылка на картинку">
+        </fieldset>
+      </form>
+      <button class="popup__submit-button" type="submit">Создать</button>
+    </div>
+  </div>
+
+  <div class="popup popup_look-image">
+    <div class="popup__container-image">
+      <button class="popup__close-button close-image" type="button"></button>
+      <figure class="popup__figure">
+        <img class="popup__image" src="#" alt="#">
+        <figcaption class="popup__image-caption"></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <template id="element-template">
+    <li class="element">
+      <button class="element__remove link" type="button"></button>
+      <img src="#" alt="#" class="element__image">
+      <div class="element__box-info">
+        <p class="element__name-mesto"></p>
+        <button class="element__like" type="button"></button>
+      </div>
+    </li>
+    </template>
 
   <script src="./script/script.js"></script>
 </body>
