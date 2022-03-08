@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const profile = document.querySelector('.profile');
 // popup 
 //const popup = document.querySelectorAll('.popup');
@@ -34,6 +35,71 @@ const imageName = cardsList.querySelector(".element__name-mesto");
 const inputNameEl = popupFormMesto.querySelector("#input-element");
 const inputUrlEl = popupFormMesto.querySelector( "#input-url");
 const cardTemplate = document.querySelector('#element-template').content;
+=======
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ]; 
+  
+  let profile = document.querySelector('.profile');
+  // popup 
+  let popup = document.querySelectorAll('.popup');
+  let popupEditProfile = document.querySelector('.popup_edit-profile');
+  let popupAddMesto = document.querySelector('.popup_add-mesto');
+  let popupLookImg = document.querySelector('.popup_look-image');
+  // open popup button - "click"
+  let OpenPopupEditProfile = profile.querySelector('.profile__edit-button');
+  let OpenPopupAddMesto = profile.querySelector('.profile__add-button');
+  let OpenPopupImageLook = document.querySelector(".element__image");
+  // close popup
+  let popupCloseProfile = popupEditProfile.querySelector('.popup__close-button');
+  let popupCloseMesto = popupAddMesto.querySelector('.popup__close-button');
+  let popupCloseImg = popupLookImg.querySelector('.popup__close-button');
+  //submit button
+  let submitButtonProfile = popupEditProfile.querySelector('.popup__submit-button');
+  let submitButtonMesto = popupAddMesto.querySelector('.popup__submit-button');
+  // popup form
+  let popupFormProfile = popupEditProfile.querySelector('.popup__form');
+  let popupFormMesto = popupAddMesto.querySelector('.popup__form');
+
+
+  let profileTitle = profile.querySelector('.profile__name-info');
+  let profileSubtitle = profile.querySelector('.profile__about-me');
+  let inputName = popupFormProfile.querySelector('#name-input');
+  let inputJob = popupFormProfile.querySelector('#description-input');
+
+  let popupImageLook = document.querySelector('.popup__image');
+
+  let cardsList = document.querySelector('.element-list');  
+  let cardElement = cardsList.querySelector('.element');
+  let imageLink = cardsList.querySelector(".element__image");
+  let imageName = cardsList.querySelector(".element__name-mesto");
+  let inputNameEl = popupFormMesto.querySelector("#input-element");
+  let inputUrlEl = popupFormMesto.querySelector( "#input-url");
+  let cardTemplate = document.querySelector('#element-template').content;
+>>>>>>> 3e6a4a48d41a14e4a69a40849eb85799d24cea46
  
   
 function createCard(name, link) { 
