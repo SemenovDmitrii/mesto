@@ -8,13 +8,13 @@
 </head>
 <body class="page">
   <header class="header">
-    <img src="./Images/header-logo.svg" alt="Логотип" class="header__logo link">
+    <img src="./images/header-logo.svg" alt="Логотип" class="header__logo link">
   </header>
 
   <main class="content">
     <section class="profile">
       <div class="profile__container">
-        <img class="profile__avatar" src="./Images/ZHak-Iv-Kusto.jpg" alt="Аватар">
+        <img class="profile__avatar" src="./images/ZHak-Iv-Kusto.jpg" alt="Аватар">
         <div class="profile__info">
           <h1 class="profile__name-info">Жак-Ив Кусто</h1>
           <button class="profile__edit-button link" type="button"></button>
@@ -25,7 +25,7 @@
     </section>
 
     <section class="elements">
-      <ul class="element__list">
+      <ul class="element-list">
       </ul>
     </section>
   </main>
@@ -34,36 +34,36 @@
     <p class="footer__copyright">&copy;2022 Mesto Russia</p>
   </footer>
   
-  <div class="popup popup__edit-profile">
+  <div class="popup popup_edit-profile">
     <div class="popup__container">
       <button class="popup__close-button" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="formprofile">
+      <form class="popup__form" name="form-profile">
         <fieldset class="popup__field">
-          <input class="popup__input" type="text" name="inputname" id="name-input" placeholder="Жак-Ив Кусто">
-          <input class="popup__input" type="text" name="inputdescription" id="description-input" placeholder="Исследователь океана">
+          <input class="popup__input" type="text" name="input-name" id="name-input" placeholder="Имя">
+          <input class="popup__input" type="text" name="input-description" id="description-input" placeholder="О себе">
         </fieldset>
+        <button class="popup__submit-button" type="submit">Сохранить</button>
       </form>
-      <button class="popup__submit-button" type="submit">Сохранить</button>
     </div>
   </div>
 
-  <div class="popup popup__add-mesto">
+  <div class="popup popup_add-mesto">
     <div class="popup__container">
       <button class="popup__close-button" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" name="formaddmesto">
+      <form class="popup__form" name="form-add-mesto">
         <fieldset class="popup__field">
-          <input class="popup__input" type="text" name="inputnameelement" id="input-element" placeholder="Название">
-          <input class="popup__input" type="url" name="inputurl" id="input-url" placeholder="Ссылка на картинку">
+          <input class="popup__input" type="text" name="input-name-element" id="input-element" placeholder="Название">
+          <input class="popup__input" type="url" name="input-url" id="input-url" placeholder="Ссылка на картинку">
         </fieldset>
+        <button class="popup__submit-button" type="submit">Создать</button>
       </form>
-      <button class="popup__submit-button" type="submit">Создать</button>
     </div>
   </div>
 
-  <div class="popup popup__look-image">
-    <div class="popup__container_image">
+  <div class="popup popup_look-image">
+    <div class="popup__container-image">
       <button class="popup__close-button close-image" type="button"></button>
       <figure class="popup__figure">
         <img class="popup__image" src="#" alt="#">
@@ -83,6 +83,7 @@
     </li>
     </template>
 
+  <script src="./script/cards.js"></script>
   <script src="./script/script.js"></script>
 </body>
 </html>
