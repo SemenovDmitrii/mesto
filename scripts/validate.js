@@ -4,7 +4,7 @@ const obj = {
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_error',
-  inputErrorClassActive: 'popup__input_type_error_active',
+  inputErrorClassActive: 'popup__validate-error_active',
 };
 
 const showInputError = (formElement, inputElement, errorMessage, obj) => {

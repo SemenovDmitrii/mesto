@@ -1,4 +1,4 @@
-.popup__input_type_error {
+.popup__validate-error {
     font-family: "Inter", "Arial", sans-serif;
     font-size: 12px;
     font-style: normal;
@@ -18,7 +18,7 @@
 }
 
 @media (max-width:950px) {
-    .popup__input_type_error {
+    .popup__validate-error {
         /*max-width: 242px;*/
         margin-left: 22px;
         margin-right: 22px;
