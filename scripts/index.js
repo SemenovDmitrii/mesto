@@ -1,6 +1,6 @@
 const profile = document.querySelector('.profile');
 // popup 
-const modalwindiws = document.querySelectorAll('.popup');
+const popups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const popupAddMesto = document.querySelector('.popup_type_add-mesto');
 const popupLookImg = document.querySelector('.popup_type_look-image');
@@ -32,11 +32,11 @@ const cardTemplate = document.querySelector('#element-template').content;
 
 function openPopup(popup) { // open popup
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closeEsc);
+  document.addEventListener('keydown', handleEscKey);
 };
 function closePopup(popup) { // close popup
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeEsc);
+  document.removeEventListener('keydown', handleEscKey);
 };
 function deleteElement(evt) { // function Delete 
   evt.target.closest('.element').remove();
@@ -44,11 +44,6 @@ function deleteElement(evt) { // function Delete
 function likeElement(evt) { // function Like
   evt.target.classList.toggle('element__like_active');
 };
-
-const cardData = {
-  name: "",
-  link: "",
-  };
  
 function createCard(cardData) { 
   const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
@@ -59,7 +54,7 @@ function createCard(cardData) {
   imageLink.src = cardData.link;
   cardElement.querySelector('.element__remove').addEventListener('click', deleteElement);  //delete
   cardElement.querySelector('.element__like').addEventListener('click', likeElement)  //like
-  cardElement.querySelector('.element__image').addEventListener('click', function(evt) {   //image look - нужно перенести в отдельную функцию
+  imageLink.addEventListener('click', function(evt) {   //image look 
     popupLookImg.querySelector('.popup__image-caption').textContent = imageName.textContent;
     popupImageLook.alt = imageLink.alt;
     popupImageLook.src = imageLink.src;
@@ -73,7 +68,11 @@ const renderCard = (cardData) => {
 };
 
 // рендер начальных карточек по условию задания
-initialCards.forEach(function (initialCards) { 
+initialCards.forEach(function (initialCards) {
+  const cardData = {
+    name: "",
+    link: "",
+    };
   cardData.name = initialCards.name;
   cardData.link = initialCards.link;
   renderCard(cardData);
@@ -84,9 +83,6 @@ openPopupEditProfile.addEventListener('click', function() {    // открыть
   inputName.value = profileTitle.textContent;
   inputJob.value = profileSubtitle.textContent;
   openPopup(popupEditProfile);
-});
-popupCloseProfile.addEventListener('click', function() {   // закрыть окно 
-  closePopup(popupEditProfile);
 });
 function submitFormProfile(evt) {  // сохранение внесенных изменений 
   evt.preventDefault();
@@ -100,27 +96,23 @@ popupFormProfile.addEventListener('submit', submitFormProfile);
 openPopupAddMesto.addEventListener('click', function() {    // открыть окно 
   openPopup(popupAddMesto);
 });
-popupCloseMesto.addEventListener('click', function() {  // закрыть окно 
-  closePopup(popupAddMesto);
-});
 function submitFormAddMesto(evt) {
   evt.preventDefault();
+  const cardData = {
+    name: "",
+    link: "",
+    };
   cardData.name = inputNameEl.value;
   cardData.link = inputUrlEl.value;
   renderCard(cardData);
   closePopup(popupAddMesto);
-  inputNameEl.value = '';
-  inputUrlEl.value = '';
+  popupFormMesto.reset();
+  shutdownSubmitButton(submitButtonMesto, obj);
 };
 popupFormMesto.addEventListener('submit', submitFormAddMesto);
 
-//закрытие попап с картинкой 
-popupCloseImg.addEventListener('click', function() {  
-  closePopup(popupLookImg);
-});
-
 // закрыть окно через нажатие - Esc
-function closeEsc(evt) {
+function handleEscKey(evt) {
   if (evt.key === 'Escape') {
       const openedPopup = document.querySelector('.popup_opened');
       closePopup(openedPopup);
@@ -128,7 +120,7 @@ function closeEsc(evt) {
 };
 
 //слушатели на нажатия для закрытия
-modalwindiws.forEach((popup) => {
+popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
       if (evt.target.classList.contains('popup_opened')) {
           closePopup(popup);

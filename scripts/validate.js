@@ -9,9 +9,6 @@ const obj = {
 
 const showInputError = (formElement, inputElement, errorMessage, obj) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  console.log(errorElement)
-  console.log(inputElement);
-  console.log(inputElement.id);
   inputElement.classList.add(obj.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(obj.inputErrorClassActive);
@@ -38,15 +35,23 @@ const hasInvalidInput = (inputList) => {
   })
 }; 
 
+const shutdownSubmitButton = (buttonElement, obj) => {
+  buttonElement.disabled = true;
+  buttonElement.classList.add(obj.inactiveButtonClass);
+};
+
+const activationSubmitButton = (buttonElement, obj) => {
+  buttonElement.disabled = false;
+  buttonElement.classList.remove(obj.inactiveButtonClass);
+};
+
 const toggleButtonState = (inputList, buttonElement, obj) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(obj.inactiveButtonClass);
-    buttonElement.disabled = true;
+    shutdownSubmitButton(buttonElement, obj);
   } else {
-    buttonElement.classList.remove(obj.inactiveButtonClass);
-    buttonElement.disabled = false;
+    activationSubmitButton(buttonElement, obj);
   }
-}; 
+};
 
 const setEventListeners = (formElement, obj) => {
   const inputList = Array.from(formElement.querySelectorAll(obj.inputSelector));
