@@ -1,47 +1,46 @@
-import { popupLookImg } from './constants.js';
-import { popupImage } from './constants.js';
-import { ImageCaption } from './constants.js';
+import { popupLookImg, popupImage, imageCaption } from './constants.js';
 import { openPopup } from './index.js';
 
 export class Card {
   constructor(cardData) { 
     this._image = cardData.link; 
-    this._name = cardData.name; 
+    this._name = cardData.name;
+    this._templateSelector = document.querySelector('#element-template').content;
   }
     
     // клонируем template элемент
     _getTemplateElement () {
-      const cardTemplate = document.querySelector('#element-template').content.querySelector('.element').cloneNode(true);
+      const cardTemplate = this._templateSelector.querySelector(".element").cloneNode(true);
       return cardTemplate;
     }
   
     // добавление слушателей 
     _setEventListener() {
-      this._cardLikeButton();
-      this._cardDeleteButton();
-      this._cardOpenClick();
+      this._likeCard();
+      this._deleteCard();
+      this._openCard();
     }
   
     // лайк
-    _cardLikeButton() {
+    _likeCard() {
       this._likeButton.addEventListener('click', () => {
         this._likeButton.classList.toggle('element__like_active');
       })
     }
   
     // удаления
-    _cardDeleteButton() {
+    _deleteCard() {
       this._deleteButton.addEventListener('click', (evt) => {
         evt.target.closest('.element').remove();
       });
     }
 
     // попап картинки 
-    _cardOpenClick() {
+    _openCard() {
       this._cardImage.addEventListener('click', () => {
         popupImage.src = this._cardImage.src;
         popupImage.alt = this._cardImage.alt;
-        ImageCaption.textContent = this._cardName.textContent;
+        imageCaption.textContent = this._cardName.textContent;
         openPopup(popupLookImg);
       })
     }

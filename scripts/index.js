@@ -52,6 +52,8 @@ popupFormProfile.addEventListener('submit', submitFormProfile);
 // функции добавления карточки место
 openPopupAddMesto.addEventListener('click', function() {    // открыть окно 
   openPopup(popupAddMesto);
+  popupFormMesto.reset();
+  validationFormMesto.resetValidation();
 });
 function submitFormAddMesto(evt) {     
   evt.preventDefault();
@@ -64,7 +66,7 @@ function submitFormAddMesto(evt) {
   renderCard(cardData);
   closePopup(popupAddMesto);
   popupFormMesto.reset();
-  validationFormMesto.toggleButtonState(); 
+  //validationFormMesto.toggleButtonState(); 
 };
 popupFormMesto.addEventListener('submit', submitFormAddMesto);
 
