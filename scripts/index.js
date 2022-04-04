@@ -1,7 +1,7 @@
 import {initialCards, obj, profile, popups, popupEditProfile, popupAddMesto, popupLookImg, openPopupEditProfile,
   openPopupAddMesto, popupCloseProfile, popupCloseMesto, popupCloseImg, submitButtonProfile, submitButtonMesto, 
   popupFormProfile, popupFormMesto, profileTitle, profileSubtitle, inputName, inputJob, popupImageLook, 
-  cardsList, inputNameEl, inputUrlEl} from './constants.js';
+  cardsList, inputNameEl, inputUrlEl, elementTemplateSelector} from './constants.js';
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 
@@ -22,7 +22,7 @@ validationFormMesto.enableValidation();
 
 // коллбек для секции
 const createCard = (cardData) => {
-  const card = new Card(cardData);
+  const card = new Card(cardData, elementTemplateSelector);
   return card.generateCard();
 }
 

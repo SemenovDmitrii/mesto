@@ -2,15 +2,15 @@ import { popupLookImg, popupImage, imageCaption } from './constants.js';
 import { openPopup } from './index.js';
 
 export class Card {
-  constructor(cardData) { 
+  constructor(cardData, elementTemplateSelector) { 
     this._image = cardData.link; 
     this._name = cardData.name;
-    this._templateSelector = document.querySelector('#element-template').content;
+    this._template = elementTemplateSelector;
   }
     
     // клонируем template элемент
     _getTemplateElement () {
-      const cardTemplate = this._templateSelector.querySelector(".element").cloneNode(true);
+      const cardTemplate = this._template.querySelector(".element").cloneNode(true);
       return cardTemplate;
     }
   

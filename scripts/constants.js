@@ -67,3 +67,5 @@ export const inputUrlEl = popupFormMesto.querySelector( "#url-input");
 
 export const popupImage = popupLookImg.querySelector('.popup__image');
 export const imageCaption = popupLookImg.querySelector('.popup__image-caption');
+
+export const elementTemplateSelector = document.querySelector('#element-template').content;
