@@ -2,19 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="./pages/index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto-Russia</title>
 </head>
 <body class="page">
   <header class="header">
-    <img src="./images/header-logo.svg" alt="Логотип" class="header__logo link">
+    <img src="<%=require('./images/header-logo.svg')%>" alt="Логотип" class="header__logo link">
   </header>
 
   <main class="content">
     <section class="profile">
       <div class="profile__container">
-        <img class="profile__avatar" src="./images/ZHak-Iv-Kusto.jpg" alt="Аватар">
+        <div class="profile__avatar">
+          <button class="profile__edit-avatar-button"></button>
+        </div>
         <div class="profile__info">
           <h1 class="profile__name-info">Жак-Ив Кусто</h1>
           <button class="profile__edit-button link" type="button"></button>
@@ -43,8 +44,8 @@
           <input class="popup__input" type="text" name="input-name" id="name-input" required placeholder="Имя" minlength="2" maxlength="40" />
           <span class="popup__validate-error" id="name-input-error"></span>
 
-          <input class="popup__input" type="text" name="input-description" id="description-input" required placeholder="О себе" minlength="2" maxlength="200" />
-          <span class="popup__validate-error" id="description-input-error"></span>
+          <input class="popup__input" type="text" name="input-about" id="about-input" required placeholder="О себе" minlength="2" maxlength="200" />
+          <span class="popup__validate-error" id="about-input-error"></span>
 
         </fieldset>
         <button class="popup__button" type="submit" disabled>Сохранить</button>
@@ -72,11 +73,35 @@
 
   <div class="popup popup_type_look-image">
     <div class="popup__container-image">
-      <button class="popup__close-button close-image" type="button"></button>
+      <button class="popup__close-button" type="button"></button>
       <figure class="popup__figure">
         <img class="popup__image" src="#" alt="#">
         <figcaption class="popup__image-caption"></figcaption>
       </figure>
+    </div>
+  </div>
+
+  <div class="popup popup_type_confirm">
+    <div class="popup__container">
+      <p class="popup__title">Вы уверены?</p>
+      <button class="popup__button" type="submit">Да</button>
+      <button class="popup__close-button" type="button"></button>
+    </div>
+  </div>
+
+  <div class="popup popup_type_edit-avatar">
+    <div class="popup__container">
+      <p class="popup__title">Обновить аватар</p>
+      <form class="popup__form" name="form-edit-avatar" novalidate>
+        <fieldset class="popup__field">
+
+          <input class="popup__input" type="url" name="new-avatar" id="new-avatar" required placeholder="Введите ссылку" />
+          <span class="popup__validate-error" id="new-avatar-error"></span>
+
+        </fieldset>
+        <button class="popup__button" type="submit">Сохранить</button>
+      </form>
+      <button class="popup__close-button" type="button"></button>
     </div>
   </div>
 
@@ -85,12 +110,12 @@
       <button class="element__remove link" type="button"></button>
       <img src="#" alt="#" class="element__image">
       <div class="element__box-info">
-        <p class="element__name-mesto"></p>
+        <h2 class="element__name-mesto"></h2>
         <button class="element__like" type="button"></button>
+        <p class="element__like-quantity"></p>
       </div>
     </li>
   </template>
 
-  <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>
