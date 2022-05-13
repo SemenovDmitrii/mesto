@@ -10,7 +10,7 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js';
-import { renderLoading } from '../utils/utils.js'
+import { uploadingChanges } from '../utils/utils.js'
 import { Api } from '../components/Api.js';
 
 // api
@@ -20,24 +20,20 @@ const api = new Api({
     authorization: 'e3187960-22db-46b1-a8e9-14c8569f58ff',
     'Content-Type': 'application/json'
   }
-})
+});
 
-Promise.all([api.loadUserInfo(), api.getCards()])
+Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cardsData])=>{
 
-    userInfoClass.setUserInfo({
-      name: userData.name,
-      about: userData.about,
-      avatarUrl: userData.avatar
-    })
+    userInfoClass.setUserInfo(userData);
     userInfoClass.userId = userData._id
-
-    section.renderedItems = cardsData;
+    
+    section.data = cardsData;
     section.renderItems();
+
   })
-  .catch((err)=>{
-    console.log(`Ошибка: ${err}`)
-  })
+  .catch((err) => console.log(err))
+
 
 const validationFormProfile = new FormValidator(obj, popupFormProfile);
 const validationFormMesto = new FormValidator(obj, popupFormMesto);
@@ -56,7 +52,7 @@ const userInfoClass = new UserInfo({
 //new Card
 const newCard = (data)=> {
   const card = new Card({
-    text: data.name,
+    name: data.name,
     link: data.link,
     likesArr: data.likes,
     userId: userInfoClass.userId,
@@ -67,39 +63,33 @@ const newCard = (data)=> {
       popupOpenCard.open(data)
     },
   
-    confirmDelete: (thisElement) => {
+    confirmDelete: (element) => {
       popupConfirm.open()
       popupConfirm.confirmHandler = ()=>{
-        api.handleDeleteCard(data._id)
+        api.deleteCard(data._id)
           .then(()=> {
-            thisElement.remove()
+            element.remove()
             popupConfirm.close()
           })
-          .catch((err)=>{
-            console.log(`Ошибка: ${err}`)
-        })
+        .catch((err) => console.log(err))
       }
     },
   
     handleLike: (likeButton, quantityLikesElement, hasLike)=>{
       if(!hasLike) {
-        api.setLike(data._id)
+        api.putLike(data._id)
           .then(data=>{
             quantityLikesElement.textContent = data.likes.length
             likeButton.classList.add('element__like_active')
           })
-          .catch(err=>{
-            console.log(`Ошибка: ${err}`)
-          })
+          .catch((err) => console.log(err))
       } else {
-        api.unsetLike(data._id)
+        api.deleteLike(data._id)
         .then(data=>{
           quantityLikesElement.textContent = data.likes.length
           likeButton.classList.remove('element__like_active')
         })
-        .catch(err=>{
-          console.log(`Ошибка: ${err}`)
-        })
+        .catch((err) => console.log(err))
       }
     },
   })
@@ -107,69 +97,64 @@ const newCard = (data)=> {
   section.addItem(cardElement, 'prepend')
 }
 
-//new card
+//add card
 const popupNewCard = new PopupWithForm({
   popupSelector: '.popup_type_add-mesto',
   handleSubmitForm: (data) => {
-    renderLoading(true, popupNewCard.submitButton)
-    api.addCard(data)
+    uploadingChanges(true, popupNewCard.submitButton)
+    api.postCard(data)
       .then((data)=> {
         newCard(data)
         popupNewCard.close()
       })
-      .catch((err)=>{
-        console.log(`Ошибка: ${err}`)
-      })
+      .catch((err) => console.log(err))
       .finally(()=>{
-        renderLoading(false, popupNewCard.submitButton, 'Создать')
+        uploadingChanges(false, popupNewCard.submitButton, 'Создать')
       });
-}});
+  }
+});
 
 //edit profile
 const popupInfoProfileEdit = new PopupWithForm({
   popupSelector: '.popup_type_edit-profile',
   handleSubmitForm: (data) => {
-    renderLoading(true, popupInfoProfileEdit.submitButton)
-    api.updateUserInfo(data)
+    uploadingChanges(true, popupInfoProfileEdit.submitButton)
+    api.patchUserInfo(data)
       .then(data => {
         userInfoClass.setUserInfo({
           name: data.name,
           about: data.about,
-          avatarUrl: data.avatar
+          avatar: data.avatar
         })
         popupInfoProfileEdit.close()
-    })
-      .catch((err)=>{
-        console.log(`Ошибка: ${err}`)
-    })
+      })
+      .catch((err) => console.log(err))
       .finally(
-        renderLoading(false, popupInfoProfileEdit.submitButton, 'Сохранить')
+        uploadingChanges(false, popupInfoProfileEdit.submitButton, 'Сохранить')
       )
   }
-}
-);
+});
 
+//edit avatar
 const popupEditAvatar = new PopupWithForm({
   popupSelector: '.popup_type_edit-avatar',
   handleSubmitForm: (data) => {
-    renderLoading(true, popupEditAvatar.submitButton)
-    api.editAvatar(data.newAvatar)
+    uploadingChanges(true, popupEditAvatar.submitButton)
+    api.patchAvatar(data)
       .then(data=>{
         userInfoClass.setUserInfo({
           name: data.name,
           about: data.about,
-          avatarUrl: data.avatar
+          avatar: data.avatar
         })
         popupEditAvatar.close()
       })
-      .catch((err)=>{
-        console.log(`Ошибка: ${err}`)
-      })
+      .catch((err) => console.log(err))
       .finally(()=>(
-        renderLoading(false, popupEditAvatar.submitButton, 'Сохранить')
+        uploadingChanges(false, popupEditAvatar.submitButton, 'Сохранить')
       ))
   }
-})
+});
 
 const popupOpenCard = new PopupWithImage('.popup_type_look-image');
 
@@ -178,7 +163,7 @@ const section = new Section({
   renderer: (data) => {
     newCard(data)
   }
-}, cardsList)
+}, cardsList);
 
 // PopupWithConfirmation
 const popupConfirm = new PopupWithConfirmation({
@@ -191,6 +176,8 @@ popupNewCard.setEventListeners();
 popupInfoProfileEdit.setEventListeners();
 popupOpenCard.setEventListeners();
 popupConfirm.setEventListeners();
+popupEditAvatar.setEventListeners();
+
 
 // обработчик кнопки открытия попапа редактирования
 function editProfile() {

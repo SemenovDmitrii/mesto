@@ -1,19 +1,19 @@
 export class Card {
-  constructor({ name, link, handleCardClick, likesArr, userId, ownerId, cardId, confirmDelete, handleLike}, templateSelector) {   
+  constructor({ name, link, likesArr, cardId, userId, ownerId,  handleLike, handleCardClick, confirmDelete, templateSelector }) {   
     this._name = name;
-    this._link = link; 
-    this._handleCardClick = handleCardClick;
+    this._link = link;
+    this._likesArr = likesArr;
+    this._cardId = cardId;
     this._userId = userId;
     this._ownerId = ownerId;
-    this._cardId = cardId;
-    this._confirmDelete = confirmDelete;
     this._handleLike = handleLike;
-    this._likesArr = likesArr;
-    this._template = templateSelector;
+    this._handleCardClick = handleCardClick;
+    this._confirmDelete = confirmDelete;
+    this._templateSelector = templateSelector;
   }
 
   _getTemplateElement () {
-    const cardTemplate = this._template.querySelector('.element').cloneNode(true);
+    const cardTemplate = this._templateSelector.querySelector(".element").cloneNode(true);
     return cardTemplate;
   }
 
@@ -37,13 +37,14 @@ export class Card {
 
   _likeCard() {
     this._likeButton.addEventListener('click', () => {
-      this._likeButton.classList.toggle('element__like_active');
+      const like = this._likeButton.classList.contains('element__like_active');
+      this._handleLike(this._likeButton, this._likeQuantity, like);
     })
   }
 
   _deleteCard() {
-    this._deleteButton.addEventListener('click', (evt) => {
-      evt.target.closest('.element').remove();
+    this._deleteButton.addEventListener('click', () => {
+      this._confirmDelete(this._element);
     });
   }
 
